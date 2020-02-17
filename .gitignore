@@ -1,0 +1,5 @@
+## Exclude Jenkins Home ##
+**/jenkins_home
+
+## OS generated files ##
+**/.DS_Store
