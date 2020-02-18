@@ -1,13 +1,17 @@
 version: "3.4"
 services:
   mydb_jenkins:
-    build: .
-    image: db_postgres_jenkins
+    image: postgres:12.1
     # if you define the build and image both, then image build from build tag, the image tag describe image name.
     container_name: postgres_db_jenkins
     restart: always
     ports:
       - 5432:5432
+    environment:
+      # do not put the password in the Dockerfile for the security issue
+        POSTGRES_USER: 'kensin'
+        POSTGRES_PASSWORD: 123
+        POSTGRES_DB: 'DEV_DB' # database name
 
   jenkins:
     image: jenkins/jenkins:lts-centos
